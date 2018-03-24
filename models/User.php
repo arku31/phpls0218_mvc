@@ -1,5 +1,5 @@
 <?php
-
+/* Для PSR-4 первая буква должна быть заглавной */
 namespace App;
 
 class User
