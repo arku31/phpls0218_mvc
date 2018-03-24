@@ -11,7 +11,7 @@
       "App\\": "models/"
     },
     "files": [
-      "core/config.php"
+      "core/config2.php"
     ]
   }
 }

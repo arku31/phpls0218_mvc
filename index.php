@@ -1,5 +1,4 @@
 <?php
-//
 require_once "vendor/autoload.php";
 // /users/test
 $routes = explode('/', $_SERVER['REQUEST_URI']);
@@ -14,8 +13,9 @@ if (!empty($routes[1])) {
 // получаем действие
 if (!empty($routes[2])) {
     $action_name = $routes[2]; //php
+    $exploded = explode('?', $action_name);
+    $action_name = $exploded[0];
 }
-
 $filename = "controllers/".strtolower($controller_name).".php";
 
 try {

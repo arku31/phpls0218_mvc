@@ -1,0 +1,9 @@
+{% extends 'courses.twig' %}
+
+{% block content %}
+    <ul>
+        {% for course in courses %}
+            <li>{{ course.name }} : {{ course.url }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

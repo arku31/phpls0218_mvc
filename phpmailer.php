@@ -18,10 +18,9 @@ $mail->addReplyTo('sadasddddddddddddddd111@mail.ru', 'Robot');
 $mail->CharSet = 'UTF-8';
 $mail->isHTML(true);                                  // Set email format to HTML
 $mail->Subject = 'Письмо с сайта ' . date('d.m.Y H:i:s', time());
-$mail->Subject = 'Here is the subject';
 $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-if(!$mail->send()) {
+if (!$mail->send()) {
     echo 'Message could not be sent.';
     echo 'Mailer Error: ' . $mail->ErrorInfo;
 } else {

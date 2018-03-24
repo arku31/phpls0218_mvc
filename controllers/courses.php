@@ -2,6 +2,7 @@
 
 namespace App;
 
+use ReCaptcha\ReCaptcha;
 use Symfony\Component\DomCrawler\Crawler;
 
 class Courses extends MainController
@@ -27,7 +28,7 @@ class Courses extends MainController
     {
         $html = file_get_contents('https://loftschool.com');
         $crawler = new Crawler($html);
-        $parsedContent = $crawler->filter('.course__list .course__title a');
+        $parsedContent = $crawler->filter('.course__title a');
         $courses = [];
         foreach ($parsedContent as $parsed) {
             $courses[]= [
@@ -41,8 +42,9 @@ class Courses extends MainController
     public function show()
     {
         $data['courses'] = $this->crawler();
-//        $this->view->twigLoad('courses', $data);
-        $this->view->render('courses', $data);
+        $data['top'] = "Привет, Игорь!";
+        $this->view->twigLoad('courses2', $data);
+//        $this->view->render('courses', $data);
     }
 
     public function showrecaptcha()
@@ -53,12 +55,19 @@ class Courses extends MainController
             'url' => '/courses/submit'
         ]);
     }
-
+/*
+ * /App
+ * new Recaptcha
+ * /App/Recaptcha
+ *
+ * new /Recaptcha
+ * /Recaptcha
+ */
     public function submit()
     {
         $remoteIp = $_SERVER['REMOTE_ADDR'];
         $gRecaptchaResponse = $_REQUEST['g-recaptcha-response'];
-        $recaptcha = new \ReCaptcha\ReCaptcha("6LdFaS0UAAAAAKK8_v2qiYuNf_Cq6BHjo17B_b95");
+        $recaptcha = new ReCaptcha("6LdFaS0UAAAAAKK8_v2qiYuNf_Cq6BHjo17B_b95");
         $resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
         if ($resp->isSuccess()) {
             echo "Успех, капча пройдена";

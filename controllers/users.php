@@ -43,4 +43,30 @@ class Users extends MainController
 
         $this->view->render('users/userfirst', $data);
     }
+
+    public function login()
+    {
+        session_start();
+        $valid_user = ['a' => 'b'];
+        $login = $_GET['login'];
+        $pwd = $_GET['pwd'];
+
+        if ($valid_user == [$login => $pwd]) {
+            echo 'auth ok';
+            $_SESSION['AUTH'] = 1;
+        } else {
+            echo 'failed auth';
+        }
+    }
+
+    public function personalArea()
+    {
+        session_start();
+        if (isset($_SESSION['AUTH']) && $_SESSION['AUTH'] == 1) {
+            print_r($_SESSION);
+            echo 'valid';
+        } else {
+            header('Location: /');
+        }
+    }
 }
