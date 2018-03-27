@@ -2,7 +2,9 @@
 require "init.php";
 $id=$_GET['id'];
 
-if(empty($id)) die('no user id');
+if (empty($id)) {
+    die('no user id');
+}
 
 $user = User::find($id);
 ?>

@@ -23,19 +23,20 @@ $capsule->setAsGlobal();
 // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
 $capsule->bootEloquent();
 
+
 class User extends Illuminate\Database\Eloquent\Model
 {
 //    protected $fillable = ['name', 'password', 'info'];//разрешено редактировать только это, остальное запрещено
     protected $guarded = ['id']; //запрещено редактировать только это, все остальное разрешено
     //created_at - дата создания
     //update_at - дата последнего редактирования
-//    public $timestamps = false;
+    public $timestamps = false;
 //public $table = "users";
 
-//    public function posts()
-//    {
-//        return $this->hasMany('Post', 'user_id', 'id');
-//    }
+    public function posts()
+    {
+        return $this->hasMany('Post', 'user_id', 'id');
+    }
 }
 class Post extends Illuminate\Database\Eloquent\Model {
 //    public function userdata()

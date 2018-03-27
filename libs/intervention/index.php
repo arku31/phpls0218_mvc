@@ -5,7 +5,7 @@
 </ul>
 
 <?php
-if(is_file('musya.jpg'))
+if (is_file('musya.jpg'))
 {
    echo '<img src="musya.jpg" alt="">';
 }

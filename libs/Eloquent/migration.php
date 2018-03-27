@@ -14,9 +14,10 @@ Capsule::schema()->create('flights', function (Blueprint $table) {
     $table->integer('airline_id')->default(1); //aeroflot
     $table->timestamps(); //created_at&updated_at тип datetime
 });
+//=========================
 
 Capsule::schema()->table('flights', function (Blueprint $table) {
-   $table->string('bortname');
+    $table->string('bortname');
 });
 
 
@@ -28,6 +29,15 @@ Capsule::schema()->create('users', function (Blueprint $table) {
     $table->string('password'); //varchar 255
     $table->text('info')->nullable();
     $table->integer('age')->default(18);
+    $table->timestamps(); //created_at&updated_at тип datetime
+});
+
+Capsule::schema()->create('posts', function (Blueprint $table) {
+    $table->increments('id');
+    $table->string('title', 25); //varchar 255
+    $table->string('content'); //varchar 255
+    $table->integer('user_id')->unsigned();
+//    $table->drop('title');
     $table->timestamps(); //created_at&updated_at тип datetime
 });
 

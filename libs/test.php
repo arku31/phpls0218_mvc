@@ -21,7 +21,7 @@ final class MathTest extends TestCase
         $y = 2;
         $math = new Math();
         $res = $math->multiplicate($x, $y);
-        $this->assertTrue($result == $res);
+        $this->assertTrue($result == $res, "$result !== $res");
 
         $result = 10;
         $x = 10;
@@ -29,5 +29,7 @@ final class MathTest extends TestCase
         $math = new Math();
         $res = $math->multiplicate($x, $y);
         $this->assertFalse($result == $res);
+
+        $this->assertEquals($result, $res);
     }
 }

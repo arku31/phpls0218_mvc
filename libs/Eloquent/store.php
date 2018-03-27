@@ -10,7 +10,8 @@ require "init.php";
 $data = [
     'name' => $_POST['name'],
     'password' => $_POST['password'],
-    'info' => $_POST['info']
+    'info' => $_POST['info'],
 ];
 $user = User::create($data);
+echo $user->id;
 

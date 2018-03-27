@@ -3,10 +3,10 @@ require __DIR__."/../../vendor/autoload.php";
 
 $array = [
     'username' => 'admin',
-    'password' => '123',
-    'ip' => '127.0.0.256',
+    'password' => '123456',
+    'ip' => '127.0.0.255',
     'json' => json_encode([1 => 'asd']),
-    'url' => 'ya.ru/'
+    'url' => 'http://ya.ru/'
 ];
 $result = GUMP::is_valid($array, [
     'username' => 'required|alpha_numeric',
@@ -16,10 +16,11 @@ $result = GUMP::is_valid($array, [
     'url' => 'valid_url'
 ]);
 
-
-
 echo "<pre>";
-print_r($result);
+var_dump($result);
+if ($result) {
+    echo 'EVERYTHING FINE';
+}
 ?>
 <style>
     body {
